@@ -1,0 +1,20 @@
+# builder image
+FROM golang:1.11 as builder
+
+# specs alpine
+ENV CGO_ENABLED=0
+ENV GOOS=linux
+ENV GOARCH=amd64
+
+WORKDIR /go/src/hilenet/collector
+COPY ./src/collector /go/src/hilenet/collector
+RUN go build -o app
+
+
+# runtime image
+FROM alpine
+RUN apk add --no-cache ca-certificates
+COPY --from=builder /go/src/hilenet/collector/app /app
+EXPOSE 8080
+ENTRYPOINT ["/app"]
+
