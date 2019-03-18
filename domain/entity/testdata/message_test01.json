@@ -1,0 +1,15 @@
+{
+  "service_name": "Google Docs",
+  "title": "HOGE",
+  "title_link": "https:\/\/goo.gl\/forms\/AAAAAAAAAAAAAAAAA",
+  "text": "hoge document",
+  "fallback": "Google Docs: HOGE",
+  "image_url": "https:\/\/lh5.googleusercontent.com\/aaaa",
+  "image_width": 333,
+  "image_height": 250,
+  "from_url": "https:\/\/goo.gl\/forms\/AAAAAAAAAAAAAAAAA",
+  "image_bytes": 55836,
+  "service_icon": "http:\/\/ssl.gstatic.com\/docs\/forms\/device_home\/ios_120.png",
+  "id": 1,
+  "original_url": "https:\/\/goo.gl\/forms\/AAAAAAAAAAAAAAAAA"
+}
