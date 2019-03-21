@@ -17,9 +17,11 @@ type Channel struct {
 }
 
 // デフォ値はgoのゼロ値でおk
+// TopicとPurpose，差異がないなら共通で良いのでは
 type Topic struct {
 	Value   string
 	Creator *User
+	// Timeの方が良いのでは？
 	LastSet int
 }
 
@@ -27,6 +29,7 @@ type Topic struct {
 type Purpose struct {
 	Value   string
 	Creator *User
+	// Timeの方が良いのでは？
 	LastSet int
 }
 

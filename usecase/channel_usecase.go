@@ -9,20 +9,22 @@ import (
 // Atomicを担保
 // Input Dataはnlopes/slackに依存してる
 type ChannelUsecase struct {
-	repo repository.IChannelRepository
+	ChannelRepository repository.IChannelRepository
+	UserRepository    repository.IUserRepository
 }
 
 // initializer
-func NewChannelUsecase(repo repository.IChannelRepository) ChannelUsecase {
+func NewChannelUsecase(channelRepo repository.IChannelRepository, userRepo repository.IUserRepository) ChannelUsecase {
 	ChannelUsecase := ChannelUsecase{
-		repo: repo,
+		ChannelRepository: channelRepo,
+		UserRepository:    userRepo,
 	}
 	return ChannelUsecase
 }
 
 // Slackから新規チャンネル
 func (u *ChannelUsecase) AddChannel(channel *entity.Channel) (*entity.Channel, error) {
-	res, err := u.repo.Create(channel)
+	res, err := u.ChannelRepository.Create(channel)
 	if nil != err {
 		return nil, err
 	}
@@ -32,7 +34,7 @@ func (u *ChannelUsecase) AddChannel(channel *entity.Channel) (*entity.Channel, e
 
 // Slackからチャンネル情報更新
 func (u *ChannelUsecase) UpdateChannel(channel *entity.Channel) (*entity.Channel, error) {
-	res, err := u.repo.Update(channel)
+	res, err := u.ChannelRepository.Update(channel)
 	if nil != err {
 		return nil, err
 	}
@@ -42,7 +44,7 @@ func (u *ChannelUsecase) UpdateChannel(channel *entity.Channel) (*entity.Channel
 
 // Slackからチャンネル削除
 func (u *ChannelUsecase) DeleteChannel(channel *entity.Channel) (*entity.Channel, error) {
-	res, err := u.repo.Update(channel)
+	res, err := u.ChannelRepository.Update(channel)
 	if nil != err {
 		return nil, err
 	}
